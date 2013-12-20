@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Menus\MenuMain.cs" />
      <Compile Include="Assets\Scripts\Menus\MenuOptions.cs" />
      <Compile Include="Assets\Scripts\Misc\CubeSegment.cs" />
+     <Compile Include="Assets\Scripts\Misc\ScoringSystem.cs" />
      <Compile Include="Assets\Scripts\Misc\TrappingZone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\MultiplicatorPowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\OverTimePowerUp.cs" />

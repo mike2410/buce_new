@@ -8,9 +8,11 @@ using System.Collections;
 public class MenuOptions : MenuMain {
 		
 
+	public string playerName; 
 	
-	void Update () {
-	
+	void Start()
+	{
+		playerName = PlayerPrefs.GetString("PlayerName");
 	}
 	
 	void OnGUI()
@@ -20,12 +22,29 @@ public class MenuOptions : MenuMain {
 		if (GUILayout.Button("Start Game"))
 			Application.LoadLevel(GlobalNames.SCENE_ID_GAME);
 		if (GUILayout.Button("Back to Main Menu"))
-            Application.LoadLevel(GlobalNames.SCENE_ID_MAINMENU);
+		{
+			CheckForPlayerNameChanges();
+			Application.LoadLevel(GlobalNames.SCENE_ID_MAINMENU);
+		}
+            
 		if (GUILayout.Button("Highscore"))
             Application.LoadLevel(GlobalNames.SCENE_ID_HIGHSCORE);
 		
 		GUILayout.EndHorizontal();
 		
+		GUILayout.BeginHorizontal();
+		GUILayout.Label("Player Name: ");
+		playerName = GUI.TextField(new Rect(100, 100, 200, 20), playerName, 40);
+		GUILayout.EndHorizontal();
 		
+	}
+		
+	void CheckForPlayerNameChanges()
+	{
+		if(playerName != PlayerPrefs.GetString("PlayerName")) //check if playername changed and write to playerprefs
+		{
+			PlayerPrefs.SetString("PlayerName", playerName);
+			Debug.Log("playerName changed in playerPrefs");
+		}
 	}
 }
